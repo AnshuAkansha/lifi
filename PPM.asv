@@ -1,0 +1,24 @@
+clc;
+close all;
+clear all;
+
+fc=50;
+fs=1000;
+f1=200;
+f2=300;
+t=0:1/fs:((2/f1)-(1/fs));
+x1=0.4*cos(2*pi*f1*t)+0.5;
+subplot(311);
+plot(x1);
+title('message signal');
+grid;
+subplot(312);
+y=modulate(x1,fc,fs,'PPM');
+plot(y);
+title('PPM Modulation');
+grid;
+z=demod(y,fc,fs,'PPM');
+subplot(313);
+plot(z);
+title('demodulate o/p');
+grid;
